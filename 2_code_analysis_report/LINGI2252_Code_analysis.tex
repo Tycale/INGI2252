@@ -84,8 +84,6 @@
 \end{titlepage}
 
 
-\thispagestyle{empty}
-
 
 \newpage
 \section*{Presentation of Reddit}
@@ -399,7 +397,40 @@ for image in small_images:
   bin.add_image(image)
 \end{lstlisting}
 
+
 \pyl{} send us the following error for this part of the code \enquote{Using possibly undefined loop variable bin}. This was a hard one.
+
+\section{Crazy if's}
+
+\pyl{} warned us about a case of ``too many branches'', and it was right.
+In the \texttt{r2/lib/pages/pages.py}, from line 460 to 661, there were 48 \lstinline|if| \dots \lstinline|else|, in a single function.
+This shows that there is clearly a need to refactor and simplify this code, because adding comments would not make the code really more comprehensible.
+
+
+
+\section{Bomb}
+
+\includegraphics[scale=0.42]{atomic.png}
+
+
+\begin{lstlisting}[caption=\texttt{r2/lib/utils/utils.py}]
+class Hell(object):
+    def __str__(self):
+        return "boom!"
+
+class Bomb(object):
+    @classmethod
+    def __getattr__(cls, key):
+        raise Hell()
+
+    @classmethod
+    def __setattr__(cls, key, val):
+        raise Hell()
+
+    @classmethod
+    def __repr__(cls):
+        raise Hell()
+\end{lstlisting}
 
 
 
