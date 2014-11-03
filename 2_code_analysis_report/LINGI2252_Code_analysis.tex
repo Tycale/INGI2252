@@ -258,7 +258,8 @@ E0203 & 1 & 100.00\% & Access to member X before its definition line Y \\
 
 \subsection*{Precision}
 
-We checked the source code to determine if these were true or false-positives. We computed the precision on all the messages given by \pyl{} (as seen in Table~\ref{messages}). This way, we can have a good idea of the precision of \pyl{}.\\
+We checked the source code to determine if these errors were true or false-positives.
+We computed the precision on all the messages given by \pyl{} (as seen in Table~\ref{messages}). This way, we can have a good idea of the precision of \pyl{}.\\
 
 We have computed the precision for each category of the informations given by \pyl{} :
 
@@ -324,7 +325,7 @@ test_address = Address(firstName="John",
                        zip="12346")
 \end{lstlisting}
 
-These datas are not used in the code at all.
+These data are not used in the code at all.
 It looks like a developer tested the code with these data, but did not remove them.
 
 We haven't found any remarks to tell in the three others files. The recall we calculated is 0.82\%.
@@ -378,7 +379,7 @@ for target in targets:
 \newpage 
 \subsection{Hard to read flow structure}
 
-The following code is really hard to read. First, it uses a really unusual control flow structure, the for-else structure. The Python documentation tell us : \enquote{Loop statements may have an else clause; it is executed when the loop terminates through exhaustion of the list (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement.}. The second trick, for understanding this code, is about the scope of variables in Python. The scope of a variable does not exist in \texttt{for}, \texttt{while} and \texttt{if} structures. So the scope of any variable is delimited by the scope of the function. So, bin still exists after the for-else structure. 
+The following code is really hard to read. First, it uses a really unusual control flow structure, the for-else structure. The Python documentation tells this : \enquote{Loop statements may have an else clause; it is executed when the loop terminates through exhaustion of the list (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement}. The second trick, to understand this code, is about the scope of variables in Python. The scope of a variable does not exist in \texttt{for}, \texttt{while} and \texttt{if} structures. So the scope of any variable is delimited by the scope of the function. So, bin still exists after the for-else structure. 
 
 \begin{lstlisting}[caption=\texttt{r2/lib/nymph.py} at lines 123-135]
 bins = []
@@ -400,14 +401,14 @@ for image in small_images:
 
 \pyl{} sends us the following error for this part of the code \enquote{Using possibly undefined loop variable bin}. This was a hard one.
 
-\section{Crazy if's}
+\subsection{Crazy if's}
 
 \pyl{} warned us about a case of ``too many branches'', and it was right.
 In the \texttt{r2/lib/pages/pages.py}, from line 460 to 661, there were 48 \lstinline|if| \dots \lstinline|else|, in a single function.
 This shows that there is clearly a need to refactor and simplify this code, because adding comments would not make the code really more comprehensible.
 
 
-
+\newpage
 \subsection{Bomb}
 
 This is the most useless code found in this project. This code is never called and is really useless, as you can read. But it's funny. We don't really know why this part of code is there.
