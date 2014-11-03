@@ -435,7 +435,8 @@ class Bomb(object):
 
 \subsection{Dead code}
 
-\pyl{} did found some dead code. The message gived to us was \enquote{E1120	No value passed for parameter seeds in function call} for the following part of code :
+\pyl{} found some dead code.
+The message given was \enquote{E1120	No value passed for parameter seeds in function call} for the following part of code :
 
 \begin{lstlisting}[caption=\texttt{r2/lib/db/tdb\_cassandra.py} at lines 1428-1430]
 def schema_report():
@@ -443,7 +444,7 @@ def schema_report():
     print manager.describe_keyspace(keyspace)
 \end{lstlisting}
 
-The definition of \texttt{get\_manager()} is on the same file :
+The definition of \texttt{get\_manager()} is in the same file :
 
 \begin{lstlisting}[caption=\texttt{r2/lib/db/tdb\_cassandra.py} at lines 117-120]
 def get_manager(seeds):
@@ -452,7 +453,8 @@ def get_manager(seeds):
     return SystemManager(server)
 \end{lstlisting}
 
-As we can see, this error is fatal to Reddit. If the function \texttt{schema\_report} is call, the program is going to crash. So, we did search for a call after \texttt{schema\_report}. We weren't able to find one. Since the file is really big, we think the function \texttt{get\_manager} has been modified and the developer have find the call to this function by debugging. Since the \texttt{schema\_report} is no more call, the developer never finds this dead code. So \pyl{} helped us to find this dead code.
+As we can see, this error is fatal for Reddit. If the function \texttt{schema\_report} is called, the program is going to crash. So, we searched for a call after \texttt{schema\_report}.
+We weren't able to find one. Since the file is really big, we think the function \texttt{get\_manager} has been modified and the developer has found the call to this function by debugging. Since the \texttt{schema\_report} is no more called, the developer never finds this dead code. So \pyl{} helped us to find this dead code.
 
 
 \end{document}
