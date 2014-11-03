@@ -12,6 +12,9 @@
 \usepackage{multirow}
 \usepackage[babel=true]{csquotes}
 
+
+\usepackage[T1]{fontenc}
+
 \lstset{%
 	basicstyle=\ttfamily\footnotesize,
 	commentstyle=\color{green!90!black},
@@ -36,17 +39,50 @@
 \newcommand{\pyl}{\textsf{Pylint}}
 
 
-\title{\tbf{UCL} \\
-	LINGI2252 - Measures \& Maintenance}
-\author{Group 23 \\
-		Thibault Gerondal \& Michael Heraly \\
-		\\
-		\tit{Teacher: Kim Mens}}
-%\date{}							% Activate to display a given date or no date
-
-
+\def\blurb{\textsc{Université catholique de Louvain\\
+  École polytechnique de Louvain\\
+  Pôle d'ingénierie informatique}}
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+  \hbox to \hsize{%
+    \vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vtop{\raggedright #1}}%
+    \hss
+    \clap{\vbox{\vfill\centering #2\vfill}}%
+    \hss
+    \llap{\vtop{\raggedleft #3}}}}%
 \begin{document}
-\maketitle
+
+\begin{titlepage}
+\thispagestyle{empty}\vbox to 1\vsize{%
+  \vss
+  \vbox to 1\vsize{%
+    \haut{\raisebox{-2mm}{\includegraphics[width=2.5cm]{logo_epl.jpg}}}{\blurb}{\raisebox{-5mm}{\includegraphics[scale=0.20]{ingi_logo.png}}}
+    \vfill
+    \ligne{\Huge \textbf{\textsc{LINGI2252}}}
+     \vspace{5mm}
+    \ligne{\huge \textbf{\textsc{Software Engineering : measures and maintenance}}}
+     \vspace{15mm}
+    \ligne{\Large \textbf{\textsc{Assignment step 2: \\Assessing program quality}}}
+    \vspace{5mm}
+    \ligne{\large{\textsc{November 3, 2014}}}
+    \vfill
+    \vspace{5mm}
+    \ligne{%
+         \textsc{Professor\\Kim Mens}
+      }
+      \vspace{10mm}
+    }%
+    \ligne{%
+         \textsc{Group 23\\Michael Heraly\\Thibault Gerondal}
+      }
+      \vspace{5mm}
+  \vss
+  }
+\end{titlepage}
+
 
 \thispagestyle{empty}
 
@@ -293,7 +329,7 @@ test_address = Address(firstName="John",
 These datas are not used in the code at all.
 It looks like a developer tested the code with these data, but did not remove them.
 
-We haven't found any remarks to tell in the three others files.
+We haven't found any remarks to tell in the three others files. The recall we calculated is 0,82\%.
 
 
 \section{Bad things}
