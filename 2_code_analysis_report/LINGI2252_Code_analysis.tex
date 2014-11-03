@@ -7,6 +7,9 @@
 								% TeX will automatically convert eps --> pdf in pdflatex		
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
 
 
 \lstset{%
@@ -58,6 +61,111 @@ After installing Reddit and its dependencies\footnote{\url{https://github.com/re
 
 
 \section{Type of errors}
+
+\begin{longtable}{|c|c|r|m{9.2cm}|}
+\hline
+\textbf{\small{Error}} & \textbf{\small{Occ\footnote{Number of occurences}}} & \textbf{\small{RFP\footnote{Rate of false positive(s)}}} & \textbf{\small{Message}} \\
+\hline
+\hline
+E1101 & 225 & 17.78\% & Used when an object (variable, function, \dots) is accessed for a non-existent member. \\
+\hline
+W0201 & 144 & 0.00\% &  \\
+\hline
+W0613 & 98 & 0.00\% &  \\
+\hline
+W0612 & 91 & 8.79\% &  \\
+\hline
+R0913 & 91 & 8.79\% &  \\
+\hline
+W0621 & 88 & 9.09\% &  \\
+\hline
+E0611 & 49 & 0.00\% &  \\
+\hline
+R0914 & 49 & 4.08\% &  \\
+\hline
+W0622 & 40 & 2.50\% &  \\
+\hline
+W0231 & 38 & 2.63\% &  \\
+\hline
+C0324 & 34 & 0.00\% &  \\
+\hline
+W0311 & 27 & 0.00\% &  \\
+\hline
+C0321 & 26 & 3.85\% &  \\
+\hline
+R0902 & 24 & 4.17\% &  \\
+\hline
+W0221 & 23 & 0.00\% &  \\
+\hline
+W0403 & 22 & 0.00\% &  \\
+\hline
+E0602 & 21 & 80.95\% &  \\
+\hline
+W0232 & 21 & 19.05\% &  \\
+\hline
+W0102 & 20 & 0.00\% &  \\
+\hline
+R0911 & 12 & 0.00\% &  \\
+\hline
+W0404 & 10 & 0.00\% &  \\
+\hline
+R0904 & 9 & 22.22\% &  \\
+\hline
+W0233 & 8 & 0.00\% &  \\
+\hline
+W0702 & 8 & 0.00\% &  \\
+\hline
+E0211 & 7 & 100.00\% &  \\
+\hline
+C0203 & 7 & 0.00\% &  \\
+\hline
+E1123 & 6 & 83.33\% &  \\
+\hline
+C0322 & 6 & 0.00\% &  \\
+\hline
+C0202 & 5 & 0.00\% &  \\
+\hline
+W0105 & 5 & 0.00\% &  \\
+\hline
+R0912 & 5 & 0.00\% &  \\
+\hline
+E1120 & 4 & 0.00\% &  \\
+\hline
+E0213 & 4 & 0.00\% &  \\
+\hline
+W0631 & 4 & 50.00\% &  \\
+\hline
+E0710 & 3 & 0.00\% &  \\
+\hline
+W0703 & 3 & 0.00\% &  \\
+\hline
+F0401 & 2 & 50.00\% &  \\
+\hline
+W0106 & 2 & 0.00\% &  \\
+\hline
+R0901 & 2 & 0.00\% &  \\
+\hline
+W0602 & 2 & 100.00\% &  \\
+\hline
+E1002 & 1 & 100.00\% &  \\
+\hline
+W0122 & 1 & 100.00\% &  \\
+\hline
+E0702 & 1 & 100.00\% &  \\
+\hline
+W0101 & 1 & 0.00\% &  \\
+\hline
+E0711 & 1 & 0.00\% &  \\
+\hline
+W0701 & 1 & 0.00\% &  \\
+\hline
+E0102 & 1 & 0.00\% &  \\
+\hline
+E0101 & 1 & 0.00\% &  \\
+\hline
+E0203 & 1 & 100.00\% &  \\
+\hline
+\end{longtable}
 
 
 \section{Statistics}
