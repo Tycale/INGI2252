@@ -47,8 +47,15 @@ for i, line in enumerate(f2.readlines()):
 
 #print(code_dict)
 
+#for i in sorted(code_dict.items(), key=lambda x : x[1], reverse=True):
+#    print('{} & {} & {:.2f}\% &  \\\\'.format(i[0], i[1], (rfp_dict[i[0]]/i[1]) * 100 ))
+#    print('\\hline')
+
+false_pos = 0
+total = 0
 for i in sorted(code_dict.items(), key=lambda x : x[1], reverse=True):
-    print('{} & {} & {:.2f}\% &  \\\\'.format(i[0], i[1], (rfp_dict[i[0]]/i[1]) * 100 ))
-    print('\\hline')
+    total += i[1]
+    if i[0] in rfp_dict :
+        false_pos +=  i[1] - rfp_dict[i[0]]
 
-
+print((float(false_pos)/total))

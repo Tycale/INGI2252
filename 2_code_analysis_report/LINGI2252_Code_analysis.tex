@@ -10,7 +10,7 @@
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{multirow}
-
+\usepackage[babel=true]{csquotes}
 
 \lstset{%
 	basicstyle=\ttfamily\footnotesize,
@@ -61,18 +61,17 @@ Reddit is an open-source project, and its code is available on Github\footnote{\
 
 After installing Reddit and its dependencies\footnote{\url{https://github.com/reddit/reddit/wiki/Install-guide}}, we have run \pyl{} on the source code.
 We used the \tit{parseable} output feature that \pyl{} offers, and created a script to create a CVS file format from the parseable file.
-This way, we created a spreadsheet containing the informations about errors/warnings/refactors detected by \pyl{}: the file concerned, at which line, code of the error, and the message associated.
-This was a practical help to analyse the \pyl{} output, and compute the statistics.
+This way, we created a spreadsheet containing the informations about errors/warnings/refactors/conventions/fatal detected by \pyl{}: the file concerned, at which line, code of the error, and the message associated. This was a practical help to analyse the \pyl{} output, and compute the statistics.
 
 \newpage
 \section{Type of errors}
 
-\begin{longtable}{|c|c|r|m{9.2cm}|}
+\begin{longtable}{|l|c|r|m{9.2cm}|}
 \hline
 \textbf{\small{Error}} & \textbf{\small{Occ\footnote{Number of occurences}}} & \textbf{\small{RFP\footnote{Rate of false positive(s)}}} & \textbf{\small{Message}} \\
 \hline
 \hline
-E1101 & 225 & 17.78\% & Used when an object (variable, function, \dots) is accessed for a non-existent member. \\
+E1101 & 225 & 17.78\% & An object (variable, function, \dots) is accessed for a non-existent member. \\
 \hline
 W0201 & 144 & 0.00\% & Attribute X defined outside \_\_init\_\_ \\
 \hline
@@ -136,7 +135,7 @@ R0912 & 5 & 0.00\% & Too many branches \\
 \hline
 E1120 & 4 & 0.00\% & No value passed for parameter X in function call \\
 \hline
-E0213 & 4 & 0.00\% & Method should have \"self\" as first argument \\
+E0213 & 4 & 0.00\% & Method should have \enquote{self} as first argument \\
 \hline
 W0631 & 4 & 50.00\% & Using possibly undefined loop variable X \\
 \hline
@@ -170,6 +169,7 @@ E0101 & 1 & 0.00\% & Explicit return in \_\_init\_\_ \\
 \hline
 E0203 & 1 & 100.00\% & Access to member X before its definition line Y \\
 \hline
+\caption{\label{messages} Analyzed messages}
 \end{longtable}
 
 
@@ -177,16 +177,34 @@ E0203 & 1 & 100.00\% & Access to member X before its definition line Y \\
 
 \subsection*{Precision}
 
-We computed the precision on all the errors/warnings given by \pyl{}.
-We checked the source code to determine if these were true or false-positives.
-This way, we can have a good idea of the precision of \pyl{}.
 
-We have computed the precision for each category of the informations given by \pyl{}.
+We checked the source code to determine if these were true or false-positives. We computed the precision on all the messages given by \pyl{} (as seen in Table~\ref{messages}). This way, we can have a good idea of the precision of \pyl{}.\\
 
+We have computed the precision for each category of the informations given by \pyl{} :
+
+\begin{longtable}{|l|c|r|m{9.2cm}|}
+\hline
+\textbf{\small{}} & \textbf{\small{Precision}} & \textbf{\small{Messages analyzed}} \\
+\hline
+\hline
+Precision on Warning & 95.89\% & 657 \\
+Precision on Error & 77.84\% & 325 \\
+Precision on Refactoring & 93.22\% & 192 \\
+Precision on Convention & 98.71\% & 78 \\
+Precision on Fatal & 50\% & 2 \\
+\hline
+Precision Total & 90.9\% & 1254 \\
+\hline
+\end{longtable}
+
+As we can see, \pyl{} is really good for detecting conventions, refactoring and warning issues and is a little bit less good for advices about errors. \\
+
+Fatal happens if an error occurred which prevented \pyl{} from doing further processing. We got two \enquote{unable to import X} in our case because these modules are not mandatory for running Reddit.
 
 \subsection*{Recall}
 
 As the project is too big to be analysed in details, we have selected 2 files to compute the \tit{recall} statistic.
+
 
 
 \section{Bad things}
