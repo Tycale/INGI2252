@@ -5,11 +5,32 @@
 \usepackage[UKenglish]{babel}
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
 								% TeX will automatically convert eps --> pdf in pdflatex		
-\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{hyperref}
+
+
+\lstset{%
+	basicstyle=\ttfamily\small,
+	commentstyle=\color{green!90!black},
+	frame=single,
+	keywordstyle=\bfseries\color{blue},
+	language=C,
+	numberstyle=\color{gray},
+%	tabsize=4,
+}
+
+
+\hypersetup{%
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
 
 
 \newcommand{\tbf}[1]{\textbf{#1}}
 \newcommand{\tit}[1]{\textit{#1}}
+
+\newcommand{\pyl}{\textsf{Pylint}}
 
 
 \title{\tbf{UCL} \\
@@ -25,9 +46,30 @@
 \maketitle
 
 
-%\section{}
-%\subsection{}
+\section*{Presentation of Reddit}
+
+...
+Reddit code is available on Github\footnote{\url{https://github.com/reddit/reddit}}.
+
+
+\section{Methodology}
+
+After installing Reddit and its dependencies\footnote{\url{https://github.com/reddit/reddit/wiki/Install-guide}}, we have run \pyl on the source code.
+
+
+\section{Type of errors}
+
+
+\section{Statistics}
+
+\subsection*{Precision}
+
+
+\subsection*{Recall}
+
+
+\section{Bad things}
 
 
 
-\end{document}  
+\end{document}
