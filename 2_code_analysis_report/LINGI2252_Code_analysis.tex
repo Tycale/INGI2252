@@ -64,7 +64,7 @@ We used the \tit{parseable} output feature that \pyl offers, and created a scrip
 This way, we created a spreadsheet containing the informations about errors/warnings/refactors detected by \pyl: the file concerned, at which line, code of the error, and the message associated.
 This was a practical help to analyse the \pyl output, and compute the statistics.
 
-
+\newpage
 \section{Type of errors}
 
 \begin{longtable}{|c|c|r|m{9.2cm}|}
@@ -74,101 +74,101 @@ This was a practical help to analyse the \pyl output, and compute the statistics
 \hline
 E1101 & 225 & 17.78\% & Used when an object (variable, function, \dots) is accessed for a non-existent member. \\
 \hline
-W0201 & 144 & 0.00\% &  \\
+W0201 & 144 & 0.00\% & Attribute X defined outside \_\_init\_\_ \\
 \hline
-W0613 & 98 & 0.00\% &  \\
+W0613 & 98 & 0.00\% & Unused argument X \\
 \hline
-W0612 & 91 & 8.79\% &  \\
+W0612 & 91 & 8.79\% & Unused variable X \\
 \hline
-R0913 & 91 & 8.79\% &  \\
+R0913 & 91 & 8.79\% & Too many arguments X \\
 \hline
-W0621 & 88 & 9.09\% &  \\
+W0621 & 88 & 9.09\% & Redefining name X from outer scope \\
 \hline
-E0611 & 49 & 0.00\% &  \\
+E0611 & 49 & 0.00\% & No name X in module Y \\
 \hline
-R0914 & 49 & 4.08\% &  \\
+R0914 & 49 & 4.08\% & Too many local variables \\
 \hline
-W0622 & 40 & 2.50\% &  \\
+W0622 & 40 & 2.50\% & Redefining built-in X \\
 \hline
-W0231 & 38 & 2.63\% &  \\
+W0231 & 38 & 2.63\% & \_\_init\_\_ method from base class X is not called \\
 \hline
-C0324 & 34 & 0.00\% &  \\
+C0324 & 34 & 0.00\% & Comma not followed by a space \\
 \hline
-W0311 & 27 & 0.00\% &  \\
+W0311 & 27 & 0.00\% & Bad indentation \\
 \hline
-C0321 & 26 & 3.85\% &  \\
+C0321 & 26 & 3.85\% & More than one statement on a single line \\
 \hline
-R0902 & 24 & 4.17\% &  \\
+R0902 & 24 & 4.17\% & Too many instance attributes \\
 \hline
-W0221 & 23 & 0.00\% &  \\
+W0221 & 23 & 0.00\% & Arguments number differs from X method \\
 \hline
-W0403 & 22 & 0.00\% &  \\
+W0403 & 22 & 0.00\% & Relative import X, should be Y \\
 \hline
-E0602 & 21 & 80.95\% &  \\
+E0602 & 21 & 80.95\% & Undefined variable X \\
 \hline
-W0232 & 21 & 19.05\% &  \\
+W0232 & 21 & 19.05\% & Class has no \_\_init\_\_ method \\
 \hline
-W0102 & 20 & 0.00\% &  \\
+W0102 & 20 & 0.00\% & Dangerous default value X as argument \\
 \hline
-R0911 & 12 & 0.00\% &  \\
+R0911 & 12 & 0.00\% & Too many return statements \\
 \hline
-W0404 & 10 & 0.00\% &  \\
+W0404 & 10 & 0.00\% & Reimport X \\
 \hline
-R0904 & 9 & 22.22\% &  \\
+R0904 & 9 & 22.22\% & Too many public methods \\
 \hline
-W0233 & 8 & 0.00\% &  \\
+W0233 & 8 & 0.00\% & \_\_init\_\_ method from a non direct base class X is called \\
 \hline
-W0702 & 8 & 0.00\% &  \\
+W0702 & 8 & 0.00\% & No exception type(s) specified \\
 \hline
-E0211 & 7 & 100.00\% &  \\
+E0211 & 7 & 100.00\% & Method has no argument \\
 \hline
-C0203 & 7 & 0.00\% &  \\
+C0203 & 7 & 0.00\% & Metaclass method X should have mcs as first argument \\
 \hline
-E1123 & 6 & 83.33\% &  \\
+E1123 & 6 & 83.33\% & Passing unexpected keyword argument X in function call \\
 \hline
-C0322 & 6 & 0.00\% &  \\
+C0322 & 6 & 0.00\% & Operator not preceded by a space \\
 \hline
-C0202 & 5 & 0.00\% &  \\
+C0202 & 5 & 0.00\% & Class method X should have cls as first argument \\
 \hline
-W0105 & 5 & 0.00\% &  \\
+W0105 & 5 & 0.00\% & String statement has no effect \\
 \hline
-R0912 & 5 & 0.00\% &  \\
+R0912 & 5 & 0.00\% & Too many branches \\
 \hline
-E1120 & 4 & 0.00\% &  \\
+E1120 & 4 & 0.00\% & No value passed for parameter X in function call \\
 \hline
-E0213 & 4 & 0.00\% &  \\
+E0213 & 4 & 0.00\% & Method should have \"self\" as first argument \\
 \hline
-W0631 & 4 & 50.00\% &  \\
+W0631 & 4 & 50.00\% & Using possibly undefined loop variable X \\
 \hline
-E0710 & 3 & 0.00\% &  \\
+E0710 & 3 & 0.00\% & Raising a new style class which doesn't inherit from BaseException \\
 \hline
-W0703 & 3 & 0.00\% &  \\
+W0703 & 3 & 0.00\% & Catching too general exception X \\
 \hline
-F0401 & 2 & 50.00\% &  \\
+F0401 & 2 & 50.00\% & Unable to import X \\
 \hline
-W0106 & 2 & 0.00\% &  \\
+W0106 & 2 & 0.00\% & Expression X is assigned to nothing \\
 \hline
-R0901 & 2 & 0.00\% &  \\
+R0901 & 2 & 0.00\% & Too many ancestors \\
 \hline
-W0602 & 2 & 100.00\% &  \\
+W0602 & 2 & 100.00\% & Using global for X but no assigment is done \\
 \hline
-E1002 & 1 & 100.00\% &  \\
+E1002 & 1 & 100.00\% & Use of super on an old style class \\
 \hline
-W0122 & 1 & 100.00\% &  \\
+W0122 & 1 & 100.00\% & Use of exec \\
 \hline
-E0702 & 1 & 100.00\% &  \\
+E0702 & 1 & 100.00\% & Raising X while only classes, instances or string are allowed \\
 \hline
-W0101 & 1 & 0.00\% &  \\
+W0101 & 1 & 0.00\% & Unreachable code \\
 \hline
-E0711 & 1 & 0.00\% &  \\
+E0711 & 1 & 0.00\% & NotImplemented raised - should raise NotImplementedError \\
 \hline
-W0701 & 1 & 0.00\% &  \\
+W0701 & 1 & 0.00\% & Raising a string exception \\
 \hline
-E0102 & 1 & 0.00\% &  \\
+E0102 & 1 & 0.00\% & X already defined line Y \\
 \hline
-E0101 & 1 & 0.00\% &  \\
+E0101 & 1 & 0.00\% & Explicit return in \_\_init\_\_ \\
 \hline
-E0203 & 1 & 100.00\% &  \\
+E0203 & 1 & 100.00\% & Access to member X before its definition line Y \\
 \hline
 \end{longtable}
 
