@@ -4,19 +4,19 @@
 \usepackage[utf8]{inputenc}
 \usepackage[UKenglish]{babel}
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
-								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{xcolor}
 \usepackage{listings}
 \usepackage{hyperref}
 
 
 \lstset{%
-	basicstyle=\ttfamily\small,
+	basicstyle=\ttfamily\footnotesize,
 	commentstyle=\color{green!90!black},
-	frame=single,
+%	frame=single,
 	keywordstyle=\bfseries\color{blue},
-	language=C,
+	language=python,
 	numberstyle=\color{gray},
-%	tabsize=4,
+%	tabsize=2,
 }
 
 
@@ -48,13 +48,18 @@
 
 \section*{Presentation of Reddit}
 
-...
-Reddit code is available on Github\footnote{\url{https://github.com/reddit/reddit}}.
+Reddit is a popular social networking service that allows its members to share content as text posts or links.
+Members can vote ``up'' or ``down'' on a content to promote it to other members.
+The content is organized in subcategories, called \tit{subreddits}.
+Reddit is an open-source project, and its code is available on Github\footnote{\url{https://github.com/reddit/reddit}}.
 
 
 \section{Methodology}
 
 After installing Reddit and its dependencies\footnote{\url{https://github.com/reddit/reddit/wiki/Install-guide}}, we have run \pyl on the source code.
+We used the \tit{parseable} output feature that \pyl offers, and created a script to create a CVS file format from the parseable file.
+This way, we created a spreadsheet containing the informations about errors/warnings/refactors detected by \pyl: the file concerned, at which line, code of the error, and the message associated.
+This was a practical help to analyse the \pyl output, and compute the statistics.
 
 
 \section{Type of errors}
@@ -70,6 +75,44 @@ After installing Reddit and its dependencies\footnote{\url{https://github.com/re
 
 \section{Bad things}
 
+\hrulefill
+\begin{lstlisting}[caption=3-for-loops power]
+for campaign in all_campaigns:
+    camp_dates = set(get_date_range(campaign.start_date, \
+					campaign.end_date))
+    sr_names = tuple(sorted(campaign.target.subreddit_names))
+    daily_impressions = campaign.impressions / campaign.ndays
+
+    for location in locations:
+        if location and not location.contains(campaign.location):
+            # campaign's location is less specific than location
+            continue
+
+        for date in camp_dates.intersection(dates):
+            booked_dict[date][location][sr_names] += daily_impressions
+
+    # calculate inventory for each target and location on each date
+    datekey = lambda dt: dt.strftime('%m/%d/%Y') if datestr else dt
+
+    ret = {}
+    for target in targets:
+        name = make_target_name(target)
+        subreddit_names = target.subreddit_names
+        ret[name] = {}
+        for date in dates:
+            pageviews_by_location = {}
+            for location in locations:
+                # calculate available impressions for each location
+                booked_by_target = booked_dict[date][location]
+                pageviews_by_sr_name = pageviews_dict[location]
+                pageviews_by_location[location] = get_maximized_pageviews(
+                    subreddit_names, booked_by_target, pageviews_by_sr_name)
+            # available pageviews is the minimum from all locations
+            min_pageviews = min(pageviews_by_location.values())
+            ret[name][datekey(date)] = max(0, min_pageviews)
+\end{lstlisting}
+\hrulefill
+\hrulefill
 
 
 \end{document}
