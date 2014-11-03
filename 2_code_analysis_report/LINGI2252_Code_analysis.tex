@@ -30,7 +30,7 @@
 \newcommand{\tbf}[1]{\textbf{#1}}
 \newcommand{\tit}[1]{\textit{#1}}
 
-\newcommand{\pyl}{\textsf{Pylint}\ }
+\newcommand{\pyl}{\textsf{Pylint}}
 
 
 \title{\tbf{UCL} \\
@@ -56,10 +56,10 @@ Reddit is an open-source project, and its code is available on Github\footnote{\
 
 \section{Methodology}
 
-After installing Reddit and its dependencies\footnote{\url{https://github.com/reddit/reddit/wiki/Install-guide}}, we have run \pyl on the source code.
-We used the \tit{parseable} output feature that \pyl offers, and created a script to create a CVS file format from the parseable file.
-This way, we created a spreadsheet containing the informations about errors/warnings/refactors detected by \pyl: the file concerned, at which line, code of the error, and the message associated.
-This was a practical help to analyse the \pyl output, and compute the statistics.
+After installing Reddit and its dependencies\footnote{\url{https://github.com/reddit/reddit/wiki/Install-guide}}, we have run \pyl{} on the source code.
+We used the \tit{parseable} output feature that \pyl{} offers, and created a script to create a CVS file format from the parseable file.
+This way, we created a spreadsheet containing the informations about errors/warnings/refactors detected by \pyl{}: the file concerned, at which line, code of the error, and the message associated.
+This was a practical help to analyse the \pyl{} output, and compute the statistics.
 
 
 \section{Type of errors}
@@ -69,14 +69,22 @@ This was a practical help to analyse the \pyl output, and compute the statistics
 
 \subsection*{Precision}
 
+We computed the precision on all the errors/warnings given by \pyl{}.
+We checked the source code to determine if these were true or false-positives.
+This way, we can have a good idea of the precision of \pyl{}.
+
+We have computed the precision for each category of the informations given by \pyl{}.
+
 
 \subsection*{Recall}
+
+As the project is too big to be analysed in details, we have selected 2 files to compute the \tit{recall} statistic.
 
 
 \section{Bad things}
 
 \hrulefill
-\begin{lstlisting}[caption=3-for-loops power]
+\begin{lstlisting}[caption=3 nested for-loops - 2 times in a row - in a single function]
 for campaign in all_campaigns:
     camp_dates = set(get_date_range(campaign.start_date, \
 					campaign.end_date))
@@ -94,24 +102,23 @@ for campaign in all_campaigns:
     # calculate inventory for each target and location on each date
     datekey = lambda dt: dt.strftime('%m/%d/%Y') if datestr else dt
 
-    ret = {}
-    for target in targets:
-        name = make_target_name(target)
-        subreddit_names = target.subreddit_names
-        ret[name] = {}
-        for date in dates:
-            pageviews_by_location = {}
-            for location in locations:
-                # calculate available impressions for each location
-                booked_by_target = booked_dict[date][location]
-                pageviews_by_sr_name = pageviews_dict[location]
-                pageviews_by_location[location] = get_maximized_pageviews(
-                    subreddit_names, booked_by_target, pageviews_by_sr_name)
-            # available pageviews is the minimum from all locations
-            min_pageviews = min(pageviews_by_location.values())
-            ret[name][datekey(date)] = max(0, min_pageviews)
+ret = {}
+for target in targets:
+    name = make_target_name(target)
+    subreddit_names = target.subreddit_names
+    ret[name] = {}
+    for date in dates:
+        pageviews_by_location = {}
+        for location in locations:
+            # calculate available impressions for each location
+            booked_by_target = booked_dict[date][location]
+            pageviews_by_sr_name = pageviews_dict[location]
+            pageviews_by_location[location] = get_maximized_pageviews(
+                subreddit_names, booked_by_target, pageviews_by_sr_name)
+        # available pageviews is the minimum from all locations
+        min_pageviews = min(pageviews_by_location.values())
+        ret[name][datekey(date)] = max(0, min_pageviews)
 \end{lstlisting}
-\hrulefill
 \hrulefill
 
 
