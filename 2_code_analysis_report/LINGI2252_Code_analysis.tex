@@ -203,8 +203,47 @@ Fatal happens if an error occurred which prevented \pyl{} from doing further pro
 
 \subsection*{Recall}
 
-As the project is too big to be analysed in details, we have selected 2 files to compute the \tit{recall} statistic.
+As the project is too big to be analysed in details, we have selected 5 random files to compute the \tit{recall} statistic. \\
 
+We didn't manage to find much more than Pylint did. In \texttt{r2/lib/base.py}, the following errors was not reported :
+
+\begin{lstlisting}[caption= 3 useless functions]
+def try_pagecache(self):
+    pass
+def pre(self): pass
+def post(self): pass
+\end{lstlisting}
+
+\pyl{} could generates three errors for these functions but didn't.
+
+
+Another file analysed is \texttt{r2/lib/authorize/interaction.py} :
+
+\begin{lstlisting}[caption= test data in the file..]
+# useful test data:
+test_card = dict(AMEX       = ("370000000000002"  , 1234),
+                 DISCOVER   = ("6011000000000012" , 123),
+                 MASTERCARD = ("5424000000000015" , 123),
+                 VISA       = ("4007000000027"    , 123),
+                 # visa card which generates error codes based on the amount
+                 ERRORCARD  = ("4222222222222"    , 123))
+
+test_card = Storage((k, CreditCard(cardNumber=x,
+                                   expirationDate="2011-11",
+                                   cardCode=y)) for k, (x, y) in
+                    test_card.iteritems())
+
+test_address = Address(firstName="John",
+                       lastName="Doe",
+                       address="123 Fake St.",
+                       city="Anytown",
+                       state="MN",
+                       zip="12346")
+\end{lstlisting}
+
+These datas are not used in the code at all. It looks like testing rest that the developer used.
+
+In the three others files, we didn't found any remarques to say.
 
 
 \section{Bad things}
