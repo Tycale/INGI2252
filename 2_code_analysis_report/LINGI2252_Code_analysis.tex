@@ -329,7 +329,7 @@ test_address = Address(firstName="John",
 These datas are not used in the code at all.
 It looks like a developer tested the code with these data, but did not remove them.
 
-We haven't found any remarks to tell in the three others files. The recall we calculated is 0,82\%.
+We haven't found any remarks to tell in the three others files. The recall we calculated is 0.82\%.
 
 
 \section{Bad things}
@@ -377,8 +377,29 @@ for target in targets:
     ret[name][datekey(date)] = max(0, min_pageviews)
 \end{lstlisting}
 
+\newpage 
+\subsection{Hard to read flow structure}
 
+The following code is really hard to read. First, it uses a really unusual control flow structure, the for-else structure. The Python documentation tell us : \enquote{Loop statements may have an else clause; it is executed when the loop terminates through exhaustion of the list (with for) or when the condition becomes false (with while), but not when the loop is terminated by a break statement.}. The second trick, for understanding this code, is about the scope of variables in Python. The scope of a variable does not exist in \texttt{for}, \texttt{while} and \texttt{if} structures. So the scope of any variable is delimited by the scope of the function. So, bin still exists after the for-else structure. 
 
+\begin{lstlisting}[caption=\texttt{r2/lib/nymph.py} at lines 123-135]
+bins = []
+
+for image in small_images:
+  # find a bin to fit in
+  for bin in bins:
+    if bin.has_space_for(image):
+      break
+  else:
+    # or give up and create a new bin
+    bin = SpriteBin((0, sprite_height, sprite_width,\
+    		 sprite_height + image.height))
+    sprite_height += image.height + SPRITE_PADDING
+    bins.append(bin)
+  bin.add_image(image)
+\end{lstlisting}
+
+\pyl{} send us the following error for this part of the code \enquote{Using possibly undefined loop variable bin}. This was a hard one.
 
 
 
