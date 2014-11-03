@@ -401,14 +401,14 @@ for image in small_images:
 
 \pyl{} sends us the following error for this part of the code \enquote{Using possibly undefined loop variable bin}. This was a hard one.
 
-\section{Crazy if's}
+\subsection{Crazy if's}
 
 \pyl{} warned us about a case of ``too many branches'', and it was right.
 In the \texttt{r2/lib/pages/pages.py}, from line 460 to 661, there were 48 \lstinline|if| \dots \lstinline|else|, in a single function.
 This shows that there is clearly a need to refactor and simplify this code, because adding comments would not make the code really more comprehensible.
 
 
-
+\newpage
 \subsection{Bomb}
 
 This is the most useless code found in this project. This code is never called and is really useless, as you can read. But it's funny. We don't really know why this part of code is there.
