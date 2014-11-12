@@ -133,8 +133,6 @@ R0201 & 333 & Method could be a function \\
 \hline
 R0915 & 31 & Too many statements \\
 \hline
-I0011 & 0 & Locally disabling \dots (don't need to see things we've explicitly disabled) \\
-\hline
 \caption{\label{messages} The disabled messages by Reddit can generate a lot of noise. }
 \end{longtable}
 
@@ -170,6 +168,20 @@ This convention is not always respected in Reddit as we can see that \pyl{} give
 Used when a variable is accessed for a nonexistent member, but astng (Python Abstract Syntax Tree New Generation) was not able to interpret all possible types of this variable.
 This error is often triggered but it is nearly always a false-positive since astng was not able to inferred the type of the variable.
 
+\subsubsection*{E1101 : An object (variable, function, . . . ) is accessed for a non-existent member.}
+
+Used when an object (variable, function, \dots{}) is accessed for a non-existent member.
+This message is often a false positive because since the object members can have been created dynamically.
+But create an object member dynamically is quite a bad practice.
+It is noise since the reason of this situation is that an object member has been declared outside of the \_\_init\_\_ method which is detected by \pyl{} as W0201 : Attribute X defined outside \_\_init\_\_.
+
+\subsubsection*{W0613 : Unused argument X}
+Used when an argument is not used in the body of its function or method.
+This easily happens if the method has been override.
+And this is noise since the argument might not always be useful.
+A quick fix can be : ``del X'' to avoid this message.
+This message is common in Reddit with 98 occurences.
+
 \subsection*{Misleading name}
 
 \subsection*{Too general}
@@ -183,6 +195,25 @@ This error is often triggered but it is nearly always a false-positive since ast
 And it is a useful one, because it is a hint of a \tit{bad smell} as a class would be responsible of too many things.
 But sometimes, an object really needs to have a direct access to its attributes, and it does not really make sense to group some of those attributes in another object, as they do not have something in common (e.g., the \ttt{ProfileBar} class in pages.py, line 1995).
 
+\subsubsection*{W0612: Unused variable X}
+
+This warning can be hard to handle. 
+The following code : ``a, b, c = mytuple'' might generate two of this message if ``a'' is not used.
+But using ``mytuple[1]'' and ``mytuple[2]'' to avoid this situation would be worst.
+A cleaner solution is to leading the unused variable by ``dummy\_'' (e.g. ``dummy\_a'').
+But this is quite impractical.
+
+\subsubsection*{W0223 : Method Y is abstract in class X but not overridden}
+
+It is a good practice to override a method inherited from an abstract class. 
+But it's not mandatory as it makes the code less readable.
+
+\subsection*{W0142 : Used * or ** magic}
+
+Used when a function or method is called using *args or **kwargs to dispatch arguments. 
+This doesn't improve readability but it is useful.
+\pyl{} should not try to remove the use of a built-in operator.
+
 
 \subsection*{Important checks missing}
 
@@ -193,6 +224,20 @@ But sometimes, an object really needs to have a direct access to its attributes,
 This code has been disabled in the Reddit's configuration but it is really relevant about code quality. 
 It is used when there is no reference to the class, suggesting that the method could be used as a static function instead.
 These messages are really useful to refactor the code.
+
+\subsubsection*{W0201 : Attribute X defined outside \_\_init\_\_}
+
+This bad practice is common mistake in Reddit.
+This could improve code readability if these warnings were 144 fixed.
+It is always usefull to define every objects members in the \_\_init\_\_ method.
+
+\subsubsection*{W0311 : Bad indentation}
+
+Mixing spaces and tabs in a same project is a really bad practice in python.
+If you use tabs only or spaces only, you're fine.
+Reddit does mix spaces and tabs in same file. 
+This can lead python to crash.
+It is very nice that \pyl{} throw warnings about this practice.
 
 
 \subsubsection*{C0321 : More than one statement on a single line}
