@@ -172,7 +172,7 @@ This error is often triggered but it is nearly always a false-positive since ast
 Used when an object (variable, function, \dots{}) is accessed for a non-existent member.
 This message is often a false positive because since the object members can have been created dynamically.
 But create an object member dynamically is quite a bad practice.
-It is noise since the reason of this situation is that an object member has been declared outside of the __init__ method which is detected by \pyl{} as W0201 : Attribute X defined outside __init__.
+It is noise since the reason of this situation is that an object member has been declared outside of the \_\_init\_\_ method which is detected by \pyl{} as W0201 : Attribute X defined outside \_\_init\_\_.
 
 \subsubsection*{W0613 : Unused argument X}
 Used when an argument is not used in the body of its function or method.
@@ -188,6 +188,14 @@ This message is common in Reddit with 98 occurences.
 \subsection*{Too tolerant}
 
 \subsection*{Too restrictive}
+
+\subsubsection*{W0612: Unused variable X}
+
+This warning can be hard to handle. 
+The following code : ``a, b, c = mytuple'' might generate two of this message if ``a'' is not used.
+But using ``mytuple[1]'' and ``mytuple[2]'' to avoid this situation would be worst.
+A cleaner solution is to leading the unused variable by ``dummy\_'' (e.g. ``dummy\_a'').
+But this is quite impractical.
 
 \subsubsection*{W0223 : Method Y is abstract in class X but not overridden}
 
@@ -210,12 +218,19 @@ This code has been disabled in the Reddit's configuration but it is really relev
 It is used when there is no reference to the class, suggesting that the method could be used as a static function instead.
 These messages are really useful to refactor the code.
 
-\subsubsection*{W0201 : Attribute X defined outside __init__}
+\subsubsection*{W0201 : Attribute X defined outside \_\_init\_\_}
 
 This bad practice is common mistake in Reddit.
 This could improve code readability if these warnings were 144 fixed.
-It is always usefull to define every objects members in the __init__ method.
+It is always usefull to define every objects members in the \_\_init\_\_ method.
 
+\subsubsection*{W0311 : Bad indentation}
+
+Mixing spaces and tabs in a same project is a really bad practice in python.
+If you use tabs only or spaces only, you're fine.
+Reddit does mix spaces and tabs in same file. 
+This can lead python to crash.
+It is very nice that \pyl{} throw warnings about this practice.
 
 
 
