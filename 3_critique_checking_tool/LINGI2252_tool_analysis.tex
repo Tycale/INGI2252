@@ -102,9 +102,8 @@ We decided to modify their \texttt{pylintrc} file to see how relevant is the too
 
 \section{Analysis}
 Here are the errors that Reddit disabled for \pyl{}. 
-We did reactived them one at a time to see if they had a big impact.
-We suspect that these messages generate a lot of noise without real reason.
-\\
+We reactived them one at a time to see if they had a big impact.
+We suspect that these messages generate a lot of noise without real reason. \\
 
 \begin{longtable}{|l|r|m{9cm}|}
 \hline
@@ -131,8 +130,11 @@ I0011 & 0 & Locally disabling \dots (don't need to see things we've explicitly d
 \hline
 \caption{\label{messages} The disabled messages by Reddit can generate a lot of noise. }
 \end{longtable}
+
+
+
 \newpage
-As we can see in Table~\ref{messages}, some enabled codes (e.g. C0111) generates a lot of noise. 
+As we can see in Table~\ref{messages}, some enabled codes (e.g. C0111) generate a lot of noise. 
 Let's analyse the utility of some of these messages.
 
 \subsection*{Noise}
@@ -148,11 +150,11 @@ But sometimes, adding a docstring is not necessary because the function name alr
 This code generates 33663 messages. 
 And we can easily understand why.. This code is about naming convention.
 For example, a variable named ``u'' in the code will be reported by \pyl{} with the code C0103 (Invalid variable name ``u'').
-But this code does apply also to method, class, constants, functions, modules and attributes names.
+But this code does apply also to methods, class, constants, functions, modules and attributes names.
 
 \subsubsection*{W0212 : Access to a protected member of X class}
 
-Used when a protected member (i.e. class member with a name beginning with an underscore) is access outside the class or a descendant of the class where it's defined.
+Used when a protected member (i.e. class member with a name beginning with an underscore) is accessed outside the class or a descendant of the class where it's defined.
 This convention is not always respected in Reddit as we can see that \pyl{} gives us 2240 messages.
 
 
@@ -161,7 +163,7 @@ This convention is not always respected in Reddit as we can see that \pyl{} give
 \subsubsection*{R0201 : Method could be a function}
 
 This code has been disabled in the Reddit's configuration but it is really relevant about code quality. 
-He is used when there is no reference to the class, suggesting that the method could be used as a static function instead.
+It is used when there is no reference to the class, suggesting that the method could be used as a static function instead.
 These messages are really useful to refactor the code.
 
 
