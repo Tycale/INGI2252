@@ -142,16 +142,16 @@
 \section{Introduction}
 
 In our previous reports, we analyzed Reddit with \pyl{}.
-We first learned how to use \pyl{} and analyzed the messages that he could return.
+We first learned how to use \pyl{} and analyzed the messages that it can deliver.
 Then, we analyzed all the messages given by \pyl{} for Reddit to see if they are relevant and concise.\\
 
-In this report, we will study the links that can exist between the different error codes that \pyl{} gives us for the Reddit project.
-This will allow us to assess whether the \pyl{} messages are not redundant.
+In this report, we will study the links that can exist between the different error codes that \pyl{} gives for the Reddit project.
+This will allow us to assess if the \pyl{} messages are redundant.
 
 
 \section{Methodology}
 
-We have parsed the \pyl{} output with an home-made script to generate a table containing the correlations between the different error codes.
+We parsed the \pyl{} output with a home-made script to generate a table containing the correlations between the different error codes.
 We made three tables for three levels of analysis : by file, by class, and by method.
 \pyl{} generates error messages, and sometimes specify the class and the method concerned.
 For the file-level, we considered the messages where no class was specified.
@@ -162,6 +162,15 @@ And for the method-level, we only considered the messages where \pyl{} indicates
 To refine our analysis, we removed some error codes that weren't relevant for the analysis.
 We discarded pairs of error codes that had high distances (greater than 0.9).
 And we excluded all pairs of critics for which one of the code-critics covers more than 90\% of all source code entities analyzed.
+
+\bigskip
+The report tables are in the Appendices section.
+In the tables, we only displayed the values of the correlations that were lower than 90\%.
+We did not display correlation with value 0.
+There is also a color scale to make values more visible.
+
+\bigskip
+In our analysis, we only focused our attention to the pair of codes that had a correlation lower than 70\%, because correlations with higher values have less impact.
 
 
 
@@ -371,6 +380,8 @@ Comment: & \textit{Maybe the variable was not that useless !}\\
 
 % end same nich
 
+
+\bigskip
 \subsection{By class}
 
 \subsubsection*{Unfortunate Correlation}
@@ -530,8 +541,13 @@ W0122   &  Use of exec \\
 \hline
 \end{tabularx}
 
+
+
+\bigskip
 \section{Conclusion}
 
+We analysed the \pyl{} messages for the Reddit project.
+It turns out that most of the correlations were unfortunate correlation.
 
 
 
