@@ -1,0 +1,113 @@
+% LINGI2252 - Measures & Maintenance
+% Code Analysis
+\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage[babel=true]{csquotes}
+
+\usepackage[T1]{fontenc}
+
+\lstset{%
+	basicstyle=\ttfamily\small,
+	commentstyle=\color{green!90!black},
+	frame=single,
+	keywordstyle=\bfseries\color{blue},
+	language=python,
+	numberstyle=\color{gray},
+%	tabsize=2,
+}
+
+
+\hypersetup{%
+	colorlinks=true,
+	linkcolor=blue,
+	urlcolor=blue
+}
+
+
+\newcommand{\tbf}[1]{\textbf{#1}}
+\newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\ttt}[1]{\texttt{#1}}
+
+\newcommand{\pyl}{\textsf{Pylint}}
+
+
+\def\blurb{\textsc{Université catholique de Louvain\\
+  École polytechnique de Louvain\\
+  Pôle d'ingénierie informatique}}
+\def\clap#1{\hbox to 0pt{\hss #1\hss}}%
+\def\ligne#1{%
+  \hbox to \hsize{%
+    \vbox{\centering #1}}}%
+\def\haut#1#2#3{%
+  \hbox to \hsize{%
+    \rlap{\vtop{\raggedright #1}}%
+    \hss
+    \clap{\vbox{\vfill\centering #2\vfill}}%
+    \hss
+    \llap{\vtop{\raggedleft #3}}}}%
+\begin{document}
+
+\begin{titlepage}
+\thispagestyle{empty}\vbox to 1\vsize{%
+  \vss
+  \vbox to 1\vsize{%
+    \haut{\raisebox{-2mm}{\includegraphics[width=2.5cm]{logo_epl.jpg}}}{\blurb}{\raisebox{-5mm}{\includegraphics[scale=0.20]{ingi_logo.png}}}
+    \vfill
+    \ligne{\Huge \textbf{\textsc{LINGI2252}}}
+     \vspace{5mm}
+    \ligne{\huge \textbf{\textsc{Software Engineering : measures and maintenance}}}
+     \vspace{15mm}
+    \ligne{\Large \textbf{\textsc{Assignment step 4: \\Study patterns of co-occurring code improvements}}}
+    \vspace{5mm}
+    \ligne{\large{\textsc{\today}}}
+    \vfill
+    \vspace{5mm}
+    \ligne{%
+         \textsc{Professor\\Kim Mens}
+      }
+      \vspace{10mm}
+    }%
+    \ligne{%
+         \textsc{Group 23\\Michael Heraly\\Thibault Gerondal}
+      }
+      \vspace{5mm}
+  \vss
+  }
+\end{titlepage}
+
+
+
+\newpage
+
+
+\section{Introduction}
+
+
+\section{Methodology}
+
+
+
+\section{Patterns of Co-occurring Critics}
+
+
+\subsection{By file}
+
+
+\subsection{By class}
+
+
+\subsection{By method}
+
+
+
+
+
+\end{document}

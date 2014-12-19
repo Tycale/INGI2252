@@ -1,0 +1,71 @@
+Not interesting codes
+—————————————————————
+
+
+C0202 - Class method %s should have cls as first argument
+C0203 - Metaclass method %s should have mcs as first argument
+C0321 - More than one statement on a single line
+C0322 - [Old:] Operator not preceded by a space
+C0324 - [Old:] Comma not followed by a space
+E0101 - Explicit return in __init__
+E0611 - No name %r in module %r
+E0711 - NotImplemented raised - should raise NotImplementedError
+F0401 - Unable to import %s
+W0102 - Dangerous default value %s as argument
+W0105 - String statement has no effect
+W0106 - Expression "%s" is assigned to nothing
+W0122 - Use of exec
+W0231 - __init__ method from base class %r is not called [??]
+W0311 - Bad indentation. Found %s %s, expected %s
+W0403 - Relative import %r, should be %r
+W0404 - Reimport %r (imported line %s)
+W0602 - Using global for %r but no assignment is done
+W0701 - Raising a string exception
+W0702 - No exception type(s) specified [??]
+W0703 - Catching too general exception %s
+
+
+
+Codes that could co-occur
+—————————————————————————
+
+E0211 - Method has no argument
+&
+E0213 - Method should have "self" as first argument
+
+
+E0702 - Raising %s while only classes, instances or string are allowed
+&
+E0710 - Raising a new style class which doesn't inherit from BaseException
+
+
+W0231 - __init__ method from base class %r is not called
+&
+W0232 - Class has no __init__ method
+
+
+W0621 - Redefining name %r from outer scope (line %s)
+&
+W0622 - Redefining built-in %r
+
+
+E0203 - Access to member %r before its definition line %s
+&
+E0602 - Undefined variable %r
+
+
+E0602 - Undefined variable %r
+&
+W0631 - Using possibly undefined loop variable %r
+
+
+R0902 - Too many instance attributes (%s/%s)
+&
+R0904 - Too many public methods (%s/%s)
+
+
+=========== NOT SURE ===========
+E1120 - No value passed for parameter %s in function call
+&
+W0613 - Unused argument %r
+
