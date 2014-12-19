@@ -41,6 +41,54 @@
 
 \newcommand{\pyl}{\textsf{Pylint}}
 
+% Error messages
+% ---------------------
+% C
+\newcommand{\Cztwzth}{Metaclass method \%s should have \tit{mcs} as first argument}
+\newcommand{\Czthtwo}{More than one statement on a single line}
+\newcommand{\Czthtwf}{Comma not followed by a space}
+% E
+\newcommand{\Ezozo}{Explicit return in \_\_init\_\_}
+\newcommand{\Eztwzth}{Access to member \%r before its definition line \%s}
+\newcommand{\Eztwoo}{Method has no argument}
+\newcommand{\Ezseoz}{Raising a new style class which doesn't inherit from BaseException}
+\newcommand{\Eozztw}{Use of super on an old style class}
+% R
+\newcommand{\Rznoo}{Too many return statements (\%s/\%s)}
+\newcommand{\Rznotw}{Too many branches (\%s/\%s)}
+\newcommand{\Rznoth}{Too many arguments (\%s/\%s)}
+\newcommand{\Rznof}{Too many local variables (\%s/\%s)}
+% W
+\newcommand{\Wzoztw}{Dangerous default value \%s as argument}
+\newcommand{\Wztwzo}{Attribute \%r defined outside \_\_init\_\_}
+\newcommand{\Wztwtwo}{Arguments number differs from \%s method}
+\newcommand{\Wztwtho}{\_\_init\_\_ method from base class \%r is not called}
+\newcommand{\Wztwthtw}{Class has no \_\_init\_\_ method}
+\newcommand{\Wztwthth}{\_\_init\_\_ method from a non direct base class \%r is called}
+\newcommand{\Wzfzth}{Relative import \%r, should be \%r}
+\newcommand{\Wzfzf}{Reimport \%r (imported line \%s)}
+\newcommand{\Wzsztw}{Using global for \%r but no assignment is done}
+\newcommand{\Wzsotw}{Unused variable \%r}
+\newcommand{\Wzstwo}{Redefining name \%r from outer scope (line \%s)}
+\newcommand{\Wzstwtw}{Redefining built-in \%r}
+\newcommand{\Wzstho}{Using possibly undefined loop variable \%r}
+\newcommand{\Wzseztw}{No exception type(s) specified}
+\newcommand{\Wzsezth}{Catching too general exception \%s}
+
+
+\newcommand{\mytab}[5]{
+	\begin{tabularx}{\textwidth}{|c|X|}
+	\hline
+	\tbf{Correlation}		& #1 \\
+	\hline
+	#2	& #3 \\
+	\hline
+	#4	& #5 \\
+	\hline
+	\end{tabularx}
+}
+
+
 
 \def\blurb{\textsc{Université catholique de Louvain\\
   École polytechnique de Louvain\\
@@ -326,6 +374,117 @@ W0621		& Redefining name \%r from outer scope (line \%s) \\
 
 \subsection{By class}
 
+\mytab{0.50}{C0203}{\Cztwzth{}}{E0101}{\Ezozo{}}
+
+\bigskip \noi
+\mytab{0.50}{C0203}{\Cztwzth{}}{W0231}{\Wztwtho{}}
+
+\bigskip \noi
+\mytab{0.67}{C0203}{\Cztwzth{}}{W0233}{\Wztwthth{}}
+
+\bigskip \noi
+\mytab{0.50}{C0203}{\Cztwzth{}}{W0602}{\Wzsztw{}}
+
+\bigskip \noi
+\mytab{0.50}{C0203}{\Cztwzth{}}{W0631}{\Wzstho{}}
+
+\bigskip \noi
+\mytab{0.67}{C0203}{\Cztwzth{}}{W0702}{\Wzseztw{}}
+
+\bigskip \noi
+\mytab{0.67}{C0203}{\Cztwzth{}}{W0703}{\Wzsezth{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.67}{E0101}{\Ezozo{}}{R0912}{\Rznotw{}}
+
+\bigskip \noi
+\mytab{0.50}{E0101}{\Ezozo{}}{W0233}{\Wztwthth{}}
+
+\bigskip \noi
+\mytab{0.67}{E0101}{\Ezozo{}}{W0403}{\Wzfzth{}}
+
+\bigskip \noi
+\mytab{0.50}{E0101}{\Ezozo{}}{W0702}{\Wzseztw{}}
+
+\bigskip \noi
+\mytab{0.50}{E0101}{\Ezozo{}}{W0703}{\Wzsezth{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.67}{E0203}{\Eztwzth{}}{R0912}{\Rznotw{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.67}{R0912}{\Rznotw{}}{W0231}{\Wztwtho{}}
+
+\bigskip \noi
+\mytab{0.50}{R0912}{\Rznotw{}}{W0403}{\Wzfzth{}}
+
+\bigskip \noi
+\mytab{0.60}{R0912}{\Rznotw{}}{W0404}{\Wzfzf{}}
+
+\bigskip \noi
+\mytab{0.67}{R0912}{\Rznotw{}}{W0602}{\Wzsztw{}}
+
+\bigskip \noi
+\mytab{0.67}{R0912}{\Rznotw{}}{W0631}{\Wzstho{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.50}{W0231}{\Wztwtho{}}{W0233}{\Wztwthth{}}
+
+\bigskip \noi
+\mytab{0.67}{W0231}{\Wztwtho{}}{W0403}{\Wzfzth{}}
+
+\bigskip \noi
+\mytab{0.50}{W0231}{\Wztwtho{}}{W0702}{\Wzseztw{}}
+
+\bigskip \noi
+\mytab{0.50}{W0231}{\Wztwtho{}}{W0703}{\Wzsezth{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.50}{W0233}{\Wztwthth{}}{W0602}{\Wzsztw{}}
+
+\bigskip \noi
+\mytab{0.50}{W0233}{\Wztwthth{}}{W0631}{\Wzstho{}}
+
+\bigskip \noi
+\mytab{0.67}{W0233}{\Wztwthth{}}{W0702}{\Wzseztw{}}
+
+\bigskip \noi
+\mytab{0.67}{W0233}{\Wztwthth{}}{W0703}{\Wzseztw{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.60}{W0403}{\Wzfzth{}}{W0404}{\Wzfzf{}}
+
+\bigskip \noi
+\mytab{0.67}{W0403}{\Wzfzth{}}{W0602}{\Wzsztw{}}
+
+\bigskip \noi
+\mytab{0.67}{W0403}{\Wzfzth{}}{W0631}{\Wzstho{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.50}{W0602}{\Wzsztw{}}{W0702}{\Wzseztw{}}
+
+\bigskip \noi
+\mytab{0.50}{W0602}{\Wzsztw{}}{W0703}{\Wzsezth{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.50}{W0631}{\Wzstho{}}{W0702}{\Wzseztw{}}
+
+\bigskip \noi
+\mytab{0.50}{W0631}{\Wzstho{}}{W0703}{\Wzsezth{}}
+
+\hrule
+\bigskip \noi
+\mytab{0.67}{W0702}{\Wzseztw{}}{W0703}{\Wzsezth{}}
+
+
 
 \subsection{By method}
 
@@ -340,6 +499,17 @@ W0602   &  W0602: Using global for \%r but no assigment is done \\
 \hline
 \end{tabularx}
 
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.60 \\
+\hline
+F0401   &  Unable to import \%s \\
+\hline
+W0122   &  Use of exec \\
+\hline
+\end{tabularx}
 
 \bigskip \noi
 \begin{tabularx}{\textwidth}{|c|X|}
