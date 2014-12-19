@@ -93,10 +93,16 @@
 
 \section{Introduction}
 
+In our previous reports , we analyzed Reddit with \pyl{}.
+We first learned how to use \pyl{} and analyzed the messages that he could return.
+Then, we analyzed all the messages given by \pyl{} to reddit to see if they are relevant and concise.\\
+
+In this report, we will study the links that can exist between the different error codes \pyl{} gives us to reddit.
+This will allow us to assess whether the messages \pyl{} are not redundant.
 
 \section{Methodology}
 
-We have parsed the \pyl{} output to generate a table containing the correlations between the different error codes.
+We have parsed the \pyl{} output with an home-made script to generate a table containing the correlations between the different error codes.
 We made three tables for three levels of analysis : by file, by class, and by method.
 \pyl{} generates error messages, and sometimes specify the class and the method concerned.
 For the file-level, we considered the messages where no class was specified.
@@ -188,45 +194,49 @@ W0631		& Using possibly undefined loop variable \%r \\
 \hline
 \end{tabularx}
 
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.60 \\
+\hline
+E0611   & No name \%r in module \%r \\
+\hline
+W0232   & Class has no \_\_init\_\_ method \\
+\hline
+
+\hline
+\end{tabularx}
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.70 \\
+\hline
+E1101   & \%s \%r has no \%r member \\
+\hline
+R0914   & Too many local variables (\%s/\%s) \\
+\hline
+\end{tabularx}
 
 
+\subsubsection*{Same niche}
+This occurs when code critics seem to correlate just because they both refer to a specific kind of source entity.
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.50 \\
+\hline
+R0911   & Too many return statements (\%s/\%s) \\
+\hline
+R0912   & Too many branches (\%s/\%s) \\
+\hline
+Comment: & \textit{In Reddit, they uses a lot of if/return.}\\
+\hline
+\end{tabularx}
 
 \subsubsection*{TODO}
 
-\bigskip \noi
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\tbf{Correlation}		& 0.60 \\
-\hline
-E0611		& No name \%r in module \%r \\
-\hline
-W0232		& Class has no \_\_init\_\_ method \\
-\hline
-\end{tabularx}
-
-
-\bigskip \noi
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\tbf{Correlation}		& 0.70 \\
-\hline
-E1101		& \%s \%r has no \%r member \\
-\hline
-R0914		& Too many local variables (\%s/\%s) \\
-\hline
-\end{tabularx}
-
-
-\bigskip \noi
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\tbf{Correlation}		& 0.50 \\
-\hline
-R0911		& Too many return statements (\%s/\%s) \\
-\hline
-R0912		& Too many branches (\%s/\%s) \\
-\hline
-\end{tabularx}
 
 
 \bigskip \noi
