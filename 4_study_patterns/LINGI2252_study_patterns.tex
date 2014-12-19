@@ -7,6 +7,7 @@
 \usepackage{xcolor}
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{tabularx}
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{multirow}
@@ -35,6 +36,8 @@
 \newcommand{\tbf}[1]{\textbf{#1}}
 \newcommand{\tit}[1]{\textit{#1}}
 \newcommand{\ttt}[1]{\texttt{#1}}
+
+\newcommand{\noi}{\noindent}
 
 \newcommand{\pyl}{\textsf{Pylint}}
 
@@ -85,7 +88,7 @@
 
 
 
-\newpage
+
 
 
 \section{Introduction}
@@ -93,12 +96,222 @@
 
 \section{Methodology}
 
+We have parsed the \pyl{} output to generate a table containing the correlations between the different error codes.
+We made three tables for three levels of analysis : by file, by class, and by method.
+\pyl{} generates error messages, and sometimes specify the class and the method concerned.
+For the file-level, we considered the messages where no class was specified.
+For the class-level, we only selected the messages where \pyl{} indicates a class.
+And for the method-level, we only considered the messages where \pyl{} indicates a method.
+
+\bigskip
+To refine our analysis, we removed some error codes that weren't relevant for the analysis.
+We discarded pairs of error codes that had high distances (greater than 0.9).
+And we excluded all pairs of critics for which one of the code-critics covers more than 90\% of all source code entities analyzed.
+
 
 
 \section{Patterns of Co-occurring Critics}
 
-
 \subsection{By file}
+
+\subsubsection*{Unfortunate Correlation}
+
+This section contains pairs of error codes that have quite a low distance, but the error codes don't have something in common.
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.50 \\
+\hline
+C0322		& Operator not preceded by a space \\
+\hline
+R0904		& Too many public methods (\%s/\%s) \\
+\hline
+\end{tabularx}
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.67 \\
+\hline
+C0322		& Operator not preceded by a space \\
+\hline
+R0911		& Too many return statements (\%s/\%s) \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.50 \\
+\hline
+C0322		& Operator not preceded by a space \\
+\hline
+R0912		& Too many branches (\%s/\%s) \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.50 \\
+\hline
+C0322		& Operator not preceded by a space \\
+\hline
+W0106		& Expression "\%s" is assigned to nothing \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.50 \\
+\hline
+C0322		& Operator not preceded by a space \\
+\hline
+W0404		& Reimport \%r (imported line \%s) \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.67 \\
+\hline
+C0322		& Operator not preceded by a space \\
+\hline
+W0631		& Using possibly undefined loop variable \%r \\
+\hline
+\end{tabularx}
+
+
+
+
+\subsubsection*{TODO}
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.60 \\
+\hline
+E0611		& No name \%r in module \%r \\
+\hline
+W0232		& Class has no \_\_init\_\_ method \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.70 \\
+\hline
+E1101		& \%s \%r has no \%r member \\
+\hline
+R0914		& Too many local variables (\%s/\%s) \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.50 \\
+\hline
+R0911		& Too many return statements (\%s/\%s) \\
+\hline
+R0912		& Too many branches (\%s/\%s) \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.50 \\
+\hline
+R0911		& Too many return statements (\%s/\%s) \\
+\hline
+W0404		& Reimport \%r (imported line \%s) \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.67 \\
+\hline
+R0911		& Too many return statements (\%s/\%s) \\
+\hline
+W0631		& Using possibly undefined loop variable \%r \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.50 \\
+\hline
+R0912		& Too many branches (\%s/\%s) \\
+\hline
+W0631		& Using possibly undefined loop variable \%r \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.68 \\
+\hline
+R0913		& Too many arguments (\%s/\%s) \\
+\hline
+R0914		& Too many local variables (\%s/\%s) \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.67 \\
+\hline
+R0914		& Too many local variables (\%s/\%s) \\
+\hline
+W0612		& Unused variable \%r \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.50 \\
+\hline
+W0404		& Reimport \%r (imported line \%s) \\
+\hline
+W0631		& Using possibly undefined loop variable \%r \\
+\hline
+\end{tabularx}
+
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}		& 0.69 \\
+\hline
+W0612		& Unused variable \%r \\
+\hline
+W0621		& Redefining name \%r from outer scope (line \%s) \\
+\hline
+\end{tabularx}
+
 
 
 \subsection{By class}
@@ -107,6 +320,9 @@
 \subsection{By method}
 
 
+
+
+\section*{Appendices}
 
 
 
