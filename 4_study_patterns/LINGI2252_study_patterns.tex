@@ -141,12 +141,13 @@
 
 \section{Introduction}
 
-In our previous reports , we analyzed Reddit with \pyl{}.
+In our previous reports, we analyzed Reddit with \pyl{}.
 We first learned how to use \pyl{} and analyzed the messages that he could return.
-Then, we analyzed all the messages given by \pyl{} to reddit to see if they are relevant and concise.\\
+Then, we analyzed all the messages given by \pyl{} for Reddit to see if they are relevant and concise.\\
 
-In this report, we will study the links that can exist between the different error codes \pyl{} gives us to reddit.
-This will allow us to assess whether the messages \pyl{} are not redundant.
+In this report, we will study the links that can exist between the different error codes that \pyl{} gives us for the Reddit project.
+This will allow us to assess whether the \pyl{} messages are not redundant.
+
 
 \section{Methodology}
 
@@ -251,8 +252,6 @@ E0611   & No name \%r in module \%r \\
 \hline
 W0232   & Class has no \_\_init\_\_ method \\
 \hline
-
-\hline
 \end{tabularx}
 
 \bigskip \noi
@@ -273,7 +272,9 @@ R0914   & Too many local variables (\%s/\%s) \\
 \hline
 R0911   & Too many return statements (\%s/\%s) \\
 \hline
-W0404   & Reimport \%r (imported line \%s) \\
+R0912   & Too many branches (\%s/\%s) \\
+\hline
+Comment: & \textit{In Reddit, they use a lot of if/return.} \\
 \hline
 \end{tabularx}
 
