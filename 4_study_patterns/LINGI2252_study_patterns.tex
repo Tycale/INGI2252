@@ -385,16 +385,16 @@ This section contains pairs of error codes that have quite a low distance, but t
 \bigskip \noi
 \mytab{0.50}{C0203}{\Cztwzth{}}{W0631}{\Wzstho{}}
 
-
-
-\subsubsection*{Same niche}
-This occurs when code critics seem to correlate just because they both refer to a specific kind of source entity.
-
 \bigskip \noi
-\mytab{0.67}{C0203}{\Cztwzth{}}{W0233}{\Wztwthth{}}
-
-
-\subsubsection*{TODO}
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.67 \\
+\hline
+C0203   & \Cztwzth{} \\
+\hline
+W0233   & \Wztwthth{} \\
+\hline
+\end{tabularx}
 
 \bigskip \noi
 \mytab{0.67}{C0203}{\Cztwzth{}}{W0702}{\Wzseztw{}}
@@ -402,12 +402,8 @@ This occurs when code critics seem to correlate just because they both refer to 
 \bigskip \noi
 \mytab{0.67}{C0203}{\Cztwzth{}}{W0703}{\Wzsezth{}}
 
-\hrule
 \bigskip \noi
 \mytab{0.67}{E0101}{\Ezozo{}}{R0912}{\Rznotw{}}
-
-\bigskip \noi
-\mytab{0.50}{E0101}{\Ezozo{}}{W0233}{\Wztwthth{}}
 
 \bigskip \noi
 \mytab{0.67}{E0101}{\Ezozo{}}{W0403}{\Wzfzth{}}
@@ -418,7 +414,6 @@ This occurs when code critics seem to correlate just because they both refer to 
 \bigskip \noi
 \mytab{0.50}{E0101}{\Ezozo{}}{W0703}{\Wzsezth{}}
 
-\hrule
 \bigskip \noi
 \mytab{0.67}{E0203}{\Eztwzth{}}{R0912}{\Rznotw{}}
 
@@ -437,10 +432,6 @@ This occurs when code critics seem to correlate just because they both refer to 
 
 \bigskip \noi
 \mytab{0.67}{R0912}{\Rznotw{}}{W0631}{\Wzstho{}}
-
-\hrule
-\bigskip \noi
-\mytab{0.50}{W0231}{\Wztwtho{}}{W0233}{\Wztwthth{}}
 
 \bigskip \noi
 \mytab{0.67}{W0231}{\Wztwtho{}}{W0403}{\Wzfzth{}}
@@ -464,7 +455,6 @@ This occurs when code critics seem to correlate just because they both refer to 
 \bigskip \noi
 \mytab{0.67}{W0233}{\Wztwthth{}}{W0703}{\Wzseztw{}}
 
-\hrule
 \bigskip \noi
 \mytab{0.60}{W0403}{\Wzfzth{}}{W0404}{\Wzfzf{}}
 
@@ -492,9 +482,30 @@ This occurs when code critics seem to correlate just because they both refer to 
 \bigskip \noi
 \mytab{0.67}{W0702}{\Wzseztw{}}{W0703}{\Wzsezth{}}
 
+% end unfortunate correlation
 
+\subsubsection*{Same niche}
+This occurs when code critics seem to correlate just because they both refer to a specific kind of source entity.
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.50 \\
+\hline
+E0101   & \Ezozo{} \\
+\hline
+W0233   & \Wztwthth{} \\
+\hline
+Comment: & \textit{It seems like they use a class to return something.. This is a bad practice that makes these messages correlated.}\\
+\hline
+\end{tabularx}
+
+% end same nich
 
 \subsection{By method}
+
+\subsubsection*{Unfortunate Correlation}
+This section contains pairs of error codes that have quite a low distance, but the error codes don't have something in common.
 
 \bigskip \noi
 \begin{tabularx}{\textwidth}{|c|X|}
@@ -519,16 +530,22 @@ W0122   &  Use of exec \\
 \hline
 \end{tabularx}
 
+\subsubsection*{Same niche}
+This occurs when code critics seem to correlate just because they both refer to a specific kind of source entity.
+
 \bigskip \noi
 \begin{tabularx}{\textwidth}{|c|X|}
 \hline
-\tbf{Correlation}   & 0.60 \\
+\tbf{Correlation}   & 0.81 \\
 \hline
-F0401   &  Unable to import \%s \\
+W0233   &  \_\_init\_\_ method from a non direct base class \%r is called \\
 \hline
-W0122   &  Use of exec \\
+W0231   &  \_\_init\_\_ method from base class \%r is not called \\
+\hline
+Comment: & \textit{The source is the same. The \_\_init\_\_ is not called at the right location.}\\
 \hline
 \end{tabularx}
+
 
 \section{Conclusion}
 
