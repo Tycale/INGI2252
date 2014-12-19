@@ -265,10 +265,6 @@ R0914   & Too many local variables (\%s/\%s) \\
 \hline
 \end{tabularx}
 
-
-\subsubsection*{Same niche}
-This occurs when code critics seem to correlate just because they both refer to a specific kind of source entity.
-
 \bigskip \noi
 \begin{tabularx}{\textwidth}{|c|X|}
 \hline
@@ -282,18 +278,54 @@ Comment: & \textit{In Reddit, they use a lot of if/return.} \\
 \hline
 \end{tabularx}
 
-\subsubsection*{TODO}
-
-
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.67 \\
+\hline
+R0911   & Too many return statements (\%s/\%s) \\
+\hline
+W0631   & Using possibly undefined loop variable \%r \\
+\hline
+\end{tabularx}
 
 \bigskip \noi
 \begin{tabularx}{\textwidth}{|c|X|}
 \hline
-\tbf{Correlation}		& 0.50 \\
+\tbf{Correlation}   & 0.50 \\
 \hline
-R0911		& Too many return statements (\%s/\%s) \\
+R0912   & Too many branches (\%s/\%s) \\
 \hline
-W0404		& Reimport \%r (imported line \%s) \\
+W0631   & Using possibly undefined loop variable \%r \\
+\hline
+\end{tabularx}
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.50 \\
+\hline
+W0404   & Reimport \%r (imported line \%s) \\
+\hline
+W0631   & Using possibly undefined loop variable \%r \\
+\hline
+\end{tabularx}
+
+% end unfortunate correlation
+
+\subsubsection*{Same niche}
+This occurs when code critics seem to correlate just because they both refer to a specific kind of source entity.
+
+\bigskip \noi
+\begin{tabularx}{\textwidth}{|c|X|}
+\hline
+\tbf{Correlation}   & 0.50 \\
+\hline
+R0911   & Too many return statements (\%s/\%s) \\
+\hline
+R0912   & Too many branches (\%s/\%s) \\
+\hline
+Comment: & \textit{In Reddit, they use a lot of if/return in series.}\\
 \hline
 \end{tabularx}
 
@@ -301,75 +333,43 @@ W0404		& Reimport \%r (imported line \%s) \\
 \bigskip \noi
 \begin{tabularx}{\textwidth}{|c|X|}
 \hline
-\tbf{Correlation}		& 0.67 \\
+\tbf{Correlation}   & 0.68 \\
 \hline
-R0911		& Too many return statements (\%s/\%s) \\
+R0913   & Too many arguments (\%s/\%s) \\
 \hline
-W0631		& Using possibly undefined loop variable \%r \\
+R0914   & Too many local variables (\%s/\%s) \\
+\hline
+Comment: & \textit{When declaring arguments, you usually create a local variable to manipulate the data.}\\
 \hline
 \end{tabularx}
-
 
 \bigskip \noi
 \begin{tabularx}{\textwidth}{|c|X|}
 \hline
-\tbf{Correlation}		& 0.50 \\
+\tbf{Correlation}   & 0.67 \\
 \hline
-R0912		& Too many branches (\%s/\%s) \\
+R0914   & Too many local variables (\%s/\%s) \\
 \hline
-W0631		& Using possibly undefined loop variable \%r \\
+W0612   & Unused variable \%r \\
+\hline
+Comment: & \textit{Declaring useless variables will have an impact on the number of local variables.}\\
 \hline
 \end{tabularx}
-
 
 \bigskip \noi
 \begin{tabularx}{\textwidth}{|c|X|}
 \hline
-\tbf{Correlation}		& 0.68 \\
+\tbf{Correlation}   & 0.69 \\
 \hline
-R0913		& Too many arguments (\%s/\%s) \\
+W0612   & Unused variable \%r \\
 \hline
-R0914		& Too many local variables (\%s/\%s) \\
+W0621   & Redefining name \%r from outer scope (line \%s) \\
 \hline
-\end{tabularx}
-
-
-\bigskip \noi
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\tbf{Correlation}		& 0.67 \\
-\hline
-R0914		& Too many local variables (\%s/\%s) \\
-\hline
-W0612		& Unused variable \%r \\
+Comment: & \textit{Maybe the variable was not that useless !}\\
 \hline
 \end{tabularx}
 
-
-\bigskip \noi
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\tbf{Correlation}		& 0.50 \\
-\hline
-W0404		& Reimport \%r (imported line \%s) \\
-\hline
-W0631		& Using possibly undefined loop variable \%r \\
-\hline
-\end{tabularx}
-
-
-\bigskip \noi
-\begin{tabularx}{\textwidth}{|c|X|}
-\hline
-\tbf{Correlation}		& 0.69 \\
-\hline
-W0612		& Unused variable \%r \\
-\hline
-W0621		& Redefining name \%r from outer scope (line \%s) \\
-\hline
-\end{tabularx}
-
-
+% end same nich
 
 \subsection{By class}
 
@@ -529,6 +529,10 @@ F0401   &  Unable to import \%s \\
 W0122   &  Use of exec \\
 \hline
 \end{tabularx}
+
+\section{Conclusion}
+
+
 
 
 \newpage
